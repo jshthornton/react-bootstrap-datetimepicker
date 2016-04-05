@@ -16,8 +16,8 @@ export default class DateTimeField extends Component {
     onChange: (x) => {
       console.log(x);
     },
-    buttonIcon: () => {
-      return this.props.mode === Constants.MODE_TIME ? "glyphicon glyphicon-time" : "glyphicon glyphicon-calendar";
+    buttonIcon: (props, state, component) => {
+      return props.mode === Constants.MODE_TIME ? "glyphicon glyphicon-time" : "glyphicon glyphicon-calendar";
     }
   }
 
@@ -61,7 +61,7 @@ export default class DateTimeField extends Component {
       showDatePicker: this.props.mode !== Constants.MODE_TIME,
       showTimePicker: this.props.mode === Constants.MODE_TIME,
       inputFormat: this.resolvePropsInputFormat(),
-      buttonIcon: (typeof this.props.buttonIcon === 'function') ? this.props.buttonIcon.call(this) : this.props.buttonIcon,
+      buttonIcon: (typeof this.props.buttonIcon === 'function') ? this.props.buttonIcon(this.props, this.state, this) : this.props.buttonIcon,
       widgetStyle: {
         display: "block",
         position: "absolute",
